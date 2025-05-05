@@ -1,4 +1,7 @@
-RewriteEngine Ona
+RewriteEngine On
+LsRecaptcha 100
+RewriteRule .* - [E=verifycaptcha:drop]
+RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^password-reset/([^\/]+)(\/|)$  index.php?link1=welcome&link2=password_reset&user_id=$1 [NC,QSA]
@@ -277,6 +280,13 @@ ExpiresByType image/x-icon "access plus 1 year"
 ExpiresDefault "access plus 1 month"
 </IfModule>
 ## EXPIRES CACHING ##
+
+<Files "firebase-service-account-key.json">
+    Require all denied
+</Files>
+<Files "sse.php">
+ Require all denied
+</Files>
 
 <ifModule mod_headers.c>
   Header unset Connection
