@@ -1,7 +1,4 @@
 RewriteEngine On
-LsRecaptcha 100
-RewriteRule .* - [E=verifycaptcha:drop]
-RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^password-reset/([^\/]+)(\/|)$  index.php?link1=welcome&link2=password_reset&user_id=$1 [NC,QSA]
